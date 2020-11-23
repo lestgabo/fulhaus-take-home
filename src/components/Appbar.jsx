@@ -11,6 +11,7 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Drawer from '@material-ui/core/Drawer';
 import Button from '@material-ui/core/Button';
+import { FormatItalic } from '@material-ui/icons';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -57,6 +58,10 @@ const useStyles = makeStyles((theme) => ({
         color: '#fff',
         padding: '0 20px',
         textTransform: 'unset',
+    },
+    drawerText: {
+        fontStyle: 'italic',
+        textDecoration: 'underline',
     }
 }));
 
@@ -153,9 +158,19 @@ const Appbar = () => {
                             <Button onClick={toggleDrawer(anchorLocation, true)} className={classes.drawer}>
                                 <Typography variant='h6'>Design</Typography>
                             </Button>
-                            <Drawer anchor={anchorLocation} open={drawerState[anchorLocation]} onClose={toggleDrawer(anchorLocation, false)}>
-                            {/* <Drawer anchor={anchorLocation} open={drawerState} onClose={toggleDrawer(anchorLocation, false)}> */}
-                                Test
+                            <Drawer 
+                                anchor={anchorLocation} 
+                                open={drawerState[anchorLocation]} 
+                                onClose={toggleDrawer(anchorLocation, false)}
+                                PaperProps={{
+                                    style: {
+                                        color: '#fff',
+                                        backgroundColor: '#463d45',
+                                        width: '35vw'
+                                    }
+                                }}
+                            >
+                                <Typography variant='h4' className={classes.drawerText}>Design your own</Typography>
                             </Drawer>
                         </Grid>
                         <Grid item className={classes.rightSideMobile}>
