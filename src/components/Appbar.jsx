@@ -19,7 +19,12 @@ const useStyles = makeStyles((theme) => ({
         position: 'absolute',
         backgroundColor: 'transparent',
         boxShadow: 'none',
-        padding: '30px 60px 0px 60px',
+        [theme.breakpoints.up('md')]: {
+            position: 'absolute',
+            backgroundColor: 'transparent',
+            boxShadow: 'none',
+            padding: '30px 60px 0px 60px',
+        }
     },
     rightSideDesktop: {
         display: 'none',
