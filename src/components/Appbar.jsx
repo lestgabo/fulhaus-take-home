@@ -9,9 +9,6 @@ import IconButton from '@material-ui/core/IconButton';
 import { Link } from 'react-router-dom'; 
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
-import Button from '@material-ui/core/Button';
-import Fade from '@material-ui/core/Fade';
 
 import MyDrawer from './MyDrawer';
 
