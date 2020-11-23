@@ -11,7 +11,7 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Drawer from '@material-ui/core/Drawer';
 import Button from '@material-ui/core/Button';
-import { FormatItalic } from '@material-ui/icons';
+import Fade from '@material-ui/core/Fade';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -166,11 +166,17 @@ const Appbar = () => {
                                     style: {
                                         color: '#fff',
                                         backgroundColor: '#463d45',
-                                        width: '35vw'
+                                        width: '35vw',
+                                        display: 'flex',
+                                        justifyContent: 'center',
+                                        alignItems: 'center',
+                                        height: '100%',
                                     }
                                 }}
                             >
-                                <Typography variant='h4' className={classes.drawerText}>Design your own</Typography>
+                                <Fade in={true} timeout={1000}>
+                                    <Typography variant='h4' className={classes.drawerText}>Design your own</Typography>
+                                </Fade>
                             </Drawer>
                         </Grid>
                         <Grid item className={classes.rightSideMobile}>

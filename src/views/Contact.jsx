@@ -27,6 +27,9 @@ const useStyles = makeStyles((theme) => ({
             height: '100%',
         },
     },
+    welcomeText: {
+        padding: '60px 550px 0px 0px', 
+    }
 }));
 
 const Contact = () => {
@@ -35,7 +38,7 @@ const Contact = () => {
         <div className={classes.paperContainer}>
             <div className={classes.welcome}>
                 <Fade in={true} timeout={3000}>
-                    <Typography variant='h1'>Contact</Typography>
+                    <Typography variant='h1' className={classes.welcomeText}>Welcome Contact</Typography>
                 </Fade>
             </div>
         </div>
