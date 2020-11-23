@@ -17,9 +17,15 @@ const useStyles = makeStyles((theme) => ({
     drawerText: {
         fontStyle: 'italic',
         textDecoration: 'underline',
-        minWidth: '600px',
+        minWidth: '75vw',
         textAlign: 'center',
-    }
+        [theme.breakpoints.up('md')]: {
+            fontStyle: 'italic',
+            textDecoration: 'underline',
+            minWidth: '600px',
+            textAlign: 'center',
+        }
+    },
 }));
 
 const MyDrawer = () => {
