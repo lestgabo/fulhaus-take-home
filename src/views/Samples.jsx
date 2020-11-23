@@ -28,7 +28,10 @@ const useStyles = makeStyles((theme) => ({
         },
     },
     welcomeText: {
-        paddingTop: '120px', 
+        padding: '0px 25px',
+        [theme.breakpoints.up('md')]: {
+            paddingTop: '120px', 
+        }
     }
 }));
 
