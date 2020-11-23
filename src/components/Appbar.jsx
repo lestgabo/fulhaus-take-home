@@ -1,9 +1,13 @@
 import React from 'react';
-import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Grid from '@material-ui/core/Grid';
+import MoreIcon from '@material-ui/icons/MoreVert';
+import IconButton from '@material-ui/core/IconButton';
+import { Link } from 'react-router-dom'; 
+import Menu from '@material-ui/core/Menu';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -14,19 +18,32 @@ const useStyles = makeStyles((theme) => ({
         position: 'absolute',
         backgroundColor: 'transparent',
         boxShadow: 'none',
-        padding: '40px 60px 0px 60px',
+        padding: '30px 60px 0px 60px',
     },
-    rightSide: {
+    rightSideDesktop: {
+        display: 'none',
+        [theme.breakpoints.up('md')]: {
+            display: 'flex',
+            flexDirection: 'row',
+        },
+    },
+    rightSideMobile: {
         display: 'flex',
-        flexDirection: 'row',
+        [theme.breakpoints.up('md')]: {
+            display: 'none',
+        }
     },
     links: {
         padding: '0 20px',
-    }
+        textDecoration: 'none',
+    },
 }));
 
 const Appbar = () => {
     const classes = useStyles();
+    const mobileMenuId = 'id-samples-store-contact';
+
+    // const renderMobileMenu = ()
 
     return (
         <div className={classes.root}>
@@ -36,14 +53,32 @@ const Appbar = () => {
                         <Grid item>
                             <Typography variant='h6'>Houseandhome.com</Typography>
                         </Grid>           
-                        <Grid item className={classes.rightSide}>
-                            <Typography variant='h6' className={classes.links}>Samples</Typography>
-                            <Typography variant='h6' className={classes.links}>Store</Typography>
-                            <Typography variant='h6' className={classes.links}>Contact</Typography>
+                        <Grid item className={classes.rightSideDesktop}>
+                            <Link to='/samples' className={classes.links}>
+                                <Typography variant='h6' >Samples</Typography>
+                            </Link>
+                            <Link to='/store' className={classes.links}>
+                                <Typography variant='h6' className={classes.links}>Store</Typography>
+                            </Link>                     
+                            <Link to='/contact' className={classes.links}>
+                                <Typography variant='h6' className={classes.links}>Contact</Typography>
+                            </Link>
+                        </Grid>
+                        <Grid item className={classes.rightSideMobile}>
+                            <IconButton
+                                aria-label='show more'
+                                aria-controls={mobileMenuId}
+                                aria-haspopup='true'
+                                // onClick={handleMobileMenuOpen}
+                                color='inherit'
+                            >
+                                <MoreIcon />
+                            </IconButton>
                         </Grid>
                     </Grid>
                 </Toolbar>
             </AppBar>
+
         </div>
     )
 };

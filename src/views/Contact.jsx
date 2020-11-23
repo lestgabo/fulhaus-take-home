@@ -11,14 +11,14 @@ const useStyles = makeStyles(() => ({
     },
 }));
 
-const Home = () => {
+const Contact = () => {
     const classes = useStyles();
     return (
         <div className={classes.paperContainer}>
-            Hello from Home
+            Hello from Contact
         </div>
     )
 }
 
 
-export default Home;
+export default Contact;

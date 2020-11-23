@@ -11,14 +11,14 @@ const useStyles = makeStyles(() => ({
     },
 }));
 
-const Home = () => {
+const Store = () => {
     const classes = useStyles();
     return (
         <div className={classes.paperContainer}>
-            Hello from Home
+            Hello from Store
         </div>
     )
 }
 
 
-export default Home;
+export default Store;
