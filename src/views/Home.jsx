@@ -12,13 +12,19 @@ const useStyles = makeStyles((theme) => ({
         height: '100vh',
     },
     welcome: {
+        color: '#fff',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: '100%',
+        height: '100%',
         [theme.breakpoints.up('md')]: {
             color: '#fff',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
             width: '100%',
-            height: '100%'
+            height: '100%',
         },
     },
 }));
@@ -35,6 +41,5 @@ const Home = () => {
         </div>
     )
 }
-
 
 export default Home;
