@@ -43,6 +43,9 @@ const useStyles = makeStyles((theme) => ({
             color: 'inherit',
         }
     },
+    menuItem: {
+        justifyContent: 'center',
+    }
 }));
 
 
@@ -73,22 +76,21 @@ const Appbar = () => {
             PaperProps={{
                 style: {
                     color: '#fff',
-                    justifyContent: 'center',
                     backgroundColor: '#463d45'
                 }
             }}
         >
-            <MenuItem>
+            <MenuItem className={classes.menuItem}>
                 <Link to='/samples' className={classes.links}>
                     <Typography variant='h6' >Samples</Typography>
                 </Link>
             </MenuItem>            
-            <MenuItem>
+            <MenuItem className={classes.menuItem}>
                 <Link to='/store' className={classes.links}>
                     <Typography variant='h6' className={classes.links}>Store</Typography>
                 </Link>                     
             </MenuItem>            
-            <MenuItem>
+            <MenuItem className={classes.menuItem}>
                 <Link to='/contact' className={classes.links}>
                     <Typography variant='h6' className={classes.links}>Contact</Typography>
                 </Link>
