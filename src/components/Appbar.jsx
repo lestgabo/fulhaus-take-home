@@ -9,9 +9,11 @@ import IconButton from '@material-ui/core/IconButton';
 import { Link } from 'react-router-dom'; 
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-import Drawer from '@material-ui/core/Drawer';
+import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import Button from '@material-ui/core/Button';
 import Fade from '@material-ui/core/Fade';
+
+import MyDrawer from './MyDrawer';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -65,6 +67,8 @@ const useStyles = makeStyles((theme) => ({
     drawerText: {
         fontStyle: 'italic',
         textDecoration: 'underline',
+        minWidth: '600px',
+        textAlign: 'center',
     }
 }));
 
@@ -72,24 +76,8 @@ const useStyles = makeStyles((theme) => ({
 const Appbar = () => {
     const classes = useStyles();
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
-    const [drawerState, setDrawerState] = useState({
-        top: false,
-        left: false,
-        bottom: false,
-        right: false,
-    })
-
     const mobileMenuId = 'id-samples-store-contact';
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-
-    // drawer
-    const anchorLocation = 'right';
-    const toggleDrawer = (anchor, open) => (event) => {
-        if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
-            return;
-        }
-        setDrawerState({ ...drawerState, [anchor]: open });
-    }
 
     // menu
     const handleMobileMenuOpen = (event) => {
@@ -132,7 +120,7 @@ const Appbar = () => {
                 </Link>
             </MenuItem>
             <MenuItem className={classes.menuItem}>
-                <Typography variant='h6' className={classes.drawer}>Design</Typography>
+                <MyDrawer />
             </MenuItem>
         </Menu>
     )
@@ -158,31 +146,7 @@ const Appbar = () => {
                                 <Typography variant='h6' className={classes.links}>Contact</Typography>
                             </Link>
                             {/* drawer */}
-                            <Button onClick={toggleDrawer(anchorLocation, true)} className={classes.drawerButton}>
-                                <Typography variant='h6'>Design</Typography>
-                            </Button>
-                            <Drawer 
-                                anchor={anchorLocation} 
-                                open={drawerState[anchorLocation]} 
-                                onClose={toggleDrawer(anchorLocation, false)}
-                                // drawer paper
-                                PaperProps={{
-                                    style: {
-                                        color: '#fff',
-                                        backgroundColor: '#463d45',
-                                        width: '35vw',
-                                        display: 'flex',
-                                        justifyContent: 'center',
-                                        alignItems: 'center',
-                                        height: '100%',
-                                    }
-                                }}
-                                className={classes.drawer}
-                            >
-                                <Fade in={true} timeout={1000}>
-                                    <Typography variant='h4' className={classes.drawerText}>Design your own</Typography>
-                                </Fade>
-                            </Drawer>
+                            <MyDrawer />
                         </Grid>
                         <Grid item className={classes.rightSideMobile}>
                             <IconButton
