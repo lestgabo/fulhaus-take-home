@@ -55,6 +55,9 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: 'center',
     },
     drawer: {
+        zIndex: '50 !important',
+    },
+    drawerButton: {
         color: '#fff',
         padding: '0 20px',
         textTransform: 'unset',
@@ -155,13 +158,14 @@ const Appbar = () => {
                                 <Typography variant='h6' className={classes.links}>Contact</Typography>
                             </Link>
                             {/* drawer */}
-                            <Button onClick={toggleDrawer(anchorLocation, true)} className={classes.drawer}>
+                            <Button onClick={toggleDrawer(anchorLocation, true)} className={classes.drawerButton}>
                                 <Typography variant='h6'>Design</Typography>
                             </Button>
                             <Drawer 
                                 anchor={anchorLocation} 
                                 open={drawerState[anchorLocation]} 
                                 onClose={toggleDrawer(anchorLocation, false)}
+                                // drawer paper
                                 PaperProps={{
                                     style: {
                                         color: '#fff',
@@ -173,6 +177,7 @@ const Appbar = () => {
                                         height: '100%',
                                     }
                                 }}
+                                className={classes.drawer}
                             >
                                 <Fade in={true} timeout={1000}>
                                     <Typography variant='h4' className={classes.drawerText}>Design your own</Typography>
