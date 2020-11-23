@@ -52,7 +52,8 @@ const MyDrawer = () => {
             </Button>
             <SwipeableDrawer 
                 anchor={anchorLocation} 
-                open={drawerState[anchorLocation]} 
+                open={drawerState[anchorLocation]}
+                onOpen={toggleDrawer(anchorLocation, true)} 
                 onClose={toggleDrawer(anchorLocation, false)}
                 // drawer paper
                 PaperProps={{
