@@ -48,9 +48,10 @@ const useStyles = makeStyles((theme) => ({
     links: {
         padding: '0 20px',
         // keeps links white
+        color: '#fff',
         textDecoration: 'none',
         '&:visited': {
-            color: 'inherit',
+            color: '#fff',
         }
     },
     menuItem: {
