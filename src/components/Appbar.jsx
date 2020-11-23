@@ -9,6 +9,8 @@ import IconButton from '@material-ui/core/IconButton';
 import { Link } from 'react-router-dom'; 
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
+import Drawer from '@material-ui/core/Drawer';
+import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -50,6 +52,11 @@ const useStyles = makeStyles((theme) => ({
     },
     menuItem: {
         justifyContent: 'center',
+    },
+    drawer: {
+        color: '#fff',
+        padding: '0 20px',
+        textTransform: 'unset',
     }
 }));
 
@@ -57,10 +64,26 @@ const useStyles = makeStyles((theme) => ({
 const Appbar = () => {
     const classes = useStyles();
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
+    const [drawerState, setDrawerState] = useState({
+        top: false,
+        left: false,
+        bottom: false,
+        right: false,
+    })
 
     const mobileMenuId = 'id-samples-store-contact';
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
+    // drawer
+    const anchorLocation = 'right';
+    const toggleDrawer = (anchor, open) => (event) => {
+        if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+            return;
+        }
+        setDrawerState({ ...drawerState, [anchor]: open });
+    }
+
+    // menu
     const handleMobileMenuOpen = (event) => {
         setMobileMoreAnchorEl(event.currentTarget);
     }
@@ -100,6 +123,9 @@ const Appbar = () => {
                     <Typography variant='h6' className={classes.links}>Contact</Typography>
                 </Link>
             </MenuItem>
+            <MenuItem className={classes.menuItem}>
+                <Typography variant='h6' className={classes.drawer}>Design</Typography>
+            </MenuItem>
         </Menu>
     )
 
@@ -123,6 +149,14 @@ const Appbar = () => {
                             <Link to='/contact' className={classes.links}>
                                 <Typography variant='h6' className={classes.links}>Contact</Typography>
                             </Link>
+                            {/* drawer */}
+                            <Button onClick={toggleDrawer(anchorLocation, true)} className={classes.drawer}>
+                                <Typography variant='h6'>Design</Typography>
+                            </Button>
+                            <Drawer anchor={anchorLocation} open={drawerState[anchorLocation]} onClose={toggleDrawer(anchorLocation, false)}>
+                            {/* <Drawer anchor={anchorLocation} open={drawerState} onClose={toggleDrawer(anchorLocation, false)}> */}
+                                Test
+                            </Drawer>
                         </Grid>
                         <Grid item className={classes.rightSideMobile}>
                             <IconButton
