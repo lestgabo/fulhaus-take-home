@@ -23,12 +23,12 @@ const useStyles = makeStyles((theme) => ({
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            width: '100%',
+            width: '70%',
             height: '100%',
         },
     },
     welcomeText: {
-        padding: '60px 550px 0px 0px', 
+        paddingTop: '120px', 
     }
 }));
 
