@@ -15,7 +15,7 @@ const Home = () => {
     const classes = useStyles();
     return (
         <div className={classes.paperContainer}>
-        hello from home.
+   
         </div>
     )
 }
