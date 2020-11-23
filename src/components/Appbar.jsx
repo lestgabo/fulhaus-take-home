@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import AppBar from '@material-ui/core/AppBar';
@@ -8,6 +8,7 @@ import MoreIcon from '@material-ui/icons/MoreVert';
 import IconButton from '@material-ui/core/IconButton';
 import { Link } from 'react-router-dom'; 
 import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -22,6 +23,7 @@ const useStyles = makeStyles((theme) => ({
     },
     rightSideDesktop: {
         display: 'none',
+        // if width higher or equal to md, then display flex else none
         [theme.breakpoints.up('md')]: {
             display: 'flex',
             flexDirection: 'row',
@@ -35,15 +37,64 @@ const useStyles = makeStyles((theme) => ({
     },
     links: {
         padding: '0 20px',
+        // keeps links white
         textDecoration: 'none',
+        '&:visited': {
+            color: 'inherit',
+        }
     },
 }));
 
+
 const Appbar = () => {
     const classes = useStyles();
-    const mobileMenuId = 'id-samples-store-contact';
+    const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
 
-    // const renderMobileMenu = ()
+    const mobileMenuId = 'id-samples-store-contact';
+    const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+
+    const handleMobileMenuOpen = (event) => {
+        setMobileMoreAnchorEl(event.currentTarget);
+    }
+
+    const handleMobileMenuClose = () => {
+        setMobileMoreAnchorEl(null);
+    }
+
+    const renderMobileMenu = (
+        <Menu
+            anchorEl={mobileMoreAnchorEl}
+            achorOrigin={{ vertical: 'top', horizontal: 'right' }}
+            id={mobileMenuId}
+            keepMounted
+            transformOrigin={{ vertical: 'top', horizontal: 'right'}}
+            open={isMobileMenuOpen}
+            onClose={handleMobileMenuClose}
+            PaperProps={{
+                style: {
+                    color: '#fff',
+                    justifyContent: 'center',
+                    backgroundColor: '#463d45'
+                }
+            }}
+        >
+            <MenuItem>
+                <Link to='/samples' className={classes.links}>
+                    <Typography variant='h6' >Samples</Typography>
+                </Link>
+            </MenuItem>            
+            <MenuItem>
+                <Link to='/store' className={classes.links}>
+                    <Typography variant='h6' className={classes.links}>Store</Typography>
+                </Link>                     
+            </MenuItem>            
+            <MenuItem>
+                <Link to='/contact' className={classes.links}>
+                    <Typography variant='h6' className={classes.links}>Contact</Typography>
+                </Link>
+            </MenuItem>
+        </Menu>
+    )
 
     return (
         <div className={classes.root}>
@@ -51,7 +102,9 @@ const Appbar = () => {
                 <Toolbar>
                     <Grid container direction='row' justify='space-between' alignItems='center'>
                         <Grid item>
-                            <Typography variant='h6'>Houseandhome.com</Typography>
+                            <Link to='/' className={classes.links}>
+                                <Typography variant='h6'>Houseandhome.com</Typography>
+                            </Link>
                         </Grid>           
                         <Grid item className={classes.rightSideDesktop}>
                             <Link to='/samples' className={classes.links}>
@@ -69,7 +122,7 @@ const Appbar = () => {
                                 aria-label='show more'
                                 aria-controls={mobileMenuId}
                                 aria-haspopup='true'
-                                // onClick={handleMobileMenuOpen}
+                                onClick={handleMobileMenuOpen}
                                 color='inherit'
                             >
                                 <MoreIcon />
@@ -78,7 +131,7 @@ const Appbar = () => {
                     </Grid>
                 </Toolbar>
             </AppBar>
-
+            {renderMobileMenu}
         </div>
     )
 };
