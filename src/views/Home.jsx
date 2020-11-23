@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
+import Fade from '@material-ui/core/Fade';
 
 const backgroundSource = '/background/fulhaus-bkg.png';
 const useStyles = makeStyles((theme) => ({
@@ -27,7 +28,9 @@ const Home = () => {
     return (
         <div className={classes.paperContainer}>
             <div className={classes.welcome}>
-                <Typography variant='h1'>Welcome home</Typography>
+                <Fade in={true} timeout={3000}>
+                    <Typography variant='h1'>Welcome home</Typography>
+                </Fade>
             </div>
         </div>
     )
