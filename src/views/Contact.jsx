@@ -9,7 +9,8 @@ const useStyles = makeStyles((theme) => ({
         backgroundImage: `url(${backgroundSource})`,
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
-        height: '100vh',
+        height: '100%',
+        width: '100%',
     },
     welcome: {
         color: '#fff',
@@ -28,7 +29,6 @@ const useStyles = makeStyles((theme) => ({
         },
     },
     welcomeText: {
-        padding: '0px 25px',
         [theme.breakpoints.up('md')]: {
             paddingTop: '120px', 
         }
